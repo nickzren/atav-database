@@ -52,19 +52,19 @@ sudo ps_tokudb_admin --enable-backup -uroot -proot
 
 #### Download and unzip testing data
 ```
-git clone https://github.com/nickzren/atavdb-docker-percona.git
-gunzip atavdb-docker-percona/input/atavdb_data/*
+git clone https://github.com/nickzren/atav-database
+gunzip atav-database/data/atavdb_load_data/*
 ```
 
 #### Create database and schema
 ```
 mysql -h 127.0.0.1 -uroot -proot -e "create database atavdb"
-mysql -h 127.0.0.1 -uroot -proot atavdb < atavdb-docker-percona/input/db_schema.sql
+mysql -h 127.0.0.1 -uroot -proot atavdb < atav-database/data/atavdb_schema.sql
 ```
 
 #### Load testing data
 ```
-for file in atavdb-docker-percona/input/atavdb_data/*; do mysql -h 127.0.0.1 -uroot -proot atavdb -e "load data local infile 'atavdb-docker-percona/input/atavdb_data/${file##*/}' into table ${file##*/}" ; done
+for file in atav-database/data/atavdb_load_data/*; do mysql -h 127.0.0.1 -uroot -proot atavdb -e "load data local infile 'atav-database/data/atavdb_load_data/${file##*/}' into table ${file##*/}" ; done
 ```
 
 #### Disable InnoDB asynchronous IO if backing up InnoDB tables with TokuBackup
