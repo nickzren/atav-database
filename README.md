@@ -9,6 +9,6 @@ Check [docker](docker) to setup in docker for test/dev purpose.
 Check [ec2](ec2) to setup in AWS EC2 for production purpose.
 
 #### ATAV Components:
-* [ATAV command line tool](https://github.com/nickzren/atav)
+* [ATAV Command Line Tool](https://github.com/nickzren/atav)
 * [ATAV Data Broswer](https://github.com/nickzren/atavdb)
 * [ATAV Paper](https://www.biorxiv.org/content/10.1101/2020.06.08.136507v3)
