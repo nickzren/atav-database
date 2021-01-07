@@ -19,15 +19,28 @@ The instruction of AWS EC2 setup for ATAV database.
 sudo yum update -y
 ```
 
-#### Install Git
+#### Install Git and download repo
 ```
 sudo yum install git -y
+git clone https://github.com/nickzren/atav-database
 ```
 
 #### Install percona tokudb 5.6.45
 ```
 sudo yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm
 sudo yum -q install Percona-Server-tokudb-56-5.6.45-rel86.1.el7
+```
+
+#### Create mysql tmp dir
+```
+sudo mkdir /var/lib/mysqltmp/
+sudo chown -R mysql:mysql /var/lib/mysqltmp/
+```
+
+#### Replace default my.cnf
+```
+# use master.my.cnf for master db, slave.my.cnf for slave db
+sudo cp atav-database/config/master.my.cnf /etc/my.cnf
 ```
 
 #### Start MySQL and add root user password
@@ -48,11 +61,19 @@ sudo service mysql restart
 sudo ps_tokudb_admin --enable-backup -uroot -proot
 ```
 
+#### Enable TokuDB settings
+```
+sudo vi /etc/my.cnf
+# master db then uncomment lines for default_storage_engine, tokudb_row_format, tokudb_commit_sync, tokudb_fsync_log_period
+# slave db then uncomment lines for default_storage_engine, tokudb_row_format, tokudb_rpl_unique_checks, tokudb_rpl_lookup_rows, read_only, super_read_only
+
+sudo service mysql restart
+```
+
 ## Create ATAV Database, Load Data, Setup Backup and Restore
 
-#### Download and unzip testing data
+#### Unzip testing data
 ```
-git clone https://github.com/nickzren/atav-database
 gunzip atav-database/data/atavdb_load_data/*
 ```
 
@@ -67,15 +88,7 @@ mysql -h 127.0.0.1 -uroot -proot atavdb < atav-database/data/atavdb_schema.sql
 for file in atav-database/data/atavdb_load_data/*; do mysql -h 127.0.0.1 -uroot -proot atavdb -e "load data local infile 'atav-database/data/atavdb_load_data/${file##*/}' into table ${file##*/}" ; done
 ```
 
-#### Disable InnoDB asynchronous IO if backing up InnoDB tables with TokuBackup
-```
-# add below line to /etc/my.cnf
-innodb_use_native_aio=0
-
-sudo service mysql restart
-```
-
-#### Create backup dir and grant mysql permssion
+#### Create backup dir
 ```
 mkdir /tmp/atavdb_backup
 sudo chown -R mysql:mysql /var/lib/mysql
@@ -97,6 +110,15 @@ sudo service mysql start
 
 # check restored table records
 mysql -h 127.0.0.1 -uroot -proot atavdb -e "SHOW TABLE STATUS;"
+```
+
+#### Reinstall Percona TokuDB 
+```
+sudo yum remove Percona-Server*
+sudo rm -rf /var/lib/mysql
+sudo rm -f /etc/my.cnf
+
+sudo yum -q install Percona-Server-tokudb-56-5.6.45-rel86.1.el7
 ```
 
 ## Setup for ATAV CLI and Data Browser
