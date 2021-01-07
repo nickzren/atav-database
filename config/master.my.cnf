@@ -10,16 +10,15 @@
 # tokudb_fsync_log_period            = 0
 
 # GENERAL #
+socket                             = /var/lib/mysql/mysql.sock
+pid_file                           = /var/lib/mysql/mysql.pid
 innodb_use_native_aio              = 0
 binlog_format                      = ROW
 sync_binlog                        = 0
 secure-file-priv                   = ""
 log-warnings                       = 2
-socket                             = /var/lib/mysql/mysql.sock
-pid_file                           = /var/lib/mysql/mysql.pid
 max_allowed_packet                 = 500M
 max_connect_errors                 = 1000000
-skip_name_resolve
 sql_mode                           = STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_AUTO_VALUE_ON_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,ONLY_FULL_GROUP_BY
 sysdate_is_now                     = 1
 
