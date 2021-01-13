@@ -70,11 +70,10 @@ sudo service mysql start
 gunzip atav-database/data/atavdb_load_data/*
 ```
 
-#### Create database and schema
+#### Restore database schema
 ```
-mysql -h 127.0.0.1 -uroot -proot -e "create database atavdb"
-mysql -h 127.0.0.1 -uroot -proot atavdb < atav-database/data/atavdb_schema.sql
-mysql -h 127.0.0.1 -uroot -proot atavdb < atav-database/data/externaldb_schema.sql 
+mysql -h 127.0.0.1 -uroot -proot < atav-database/data/atavdb_schema.sql
+mysql -h 127.0.0.1 -uroot -proot < atav-database/data/externaldb_schema.sql 
 ```
 
 #### Load testing data
