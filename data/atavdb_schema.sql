@@ -16,6 +16,14 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Current Database: `atavdb`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `atavdb` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `atavdb`;
+
+--
 -- Table structure for table `DP_bins_chr1`
 --
 
