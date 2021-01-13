@@ -37,12 +37,6 @@ sudo mkdir /var/lib/mysqltmp/
 sudo chown -R mysql:mysql /var/lib/mysqltmp/
 ```
 
-#### Replace default my.cnf
-```
-# use master.my.cnf for master db, slave.my.cnf for slave db
-sudo cp atav-database/config/master.my.cnf /etc/my.cnf
-```
-
 #### Start MySQL and add root user password
 ```
 sudo service mysql start
@@ -61,13 +55,12 @@ sudo service mysql restart
 sudo ps_tokudb_admin --enable-backup -uroot -proot
 ```
 
-#### Enable TokuDB settings
+#### Replace default my.cnf
 ```
-sudo vi /etc/my.cnf
-# master db then uncomment lines for default_storage_engine, tokudb_row_format, tokudb_commit_sync, tokudb_fsync_log_period
-# slave db then uncomment lines for default_storage_engine, tokudb_row_format, tokudb_rpl_unique_checks, tokudb_rpl_lookup_rows, read_only, super_read_only
-
-sudo service mysql restart
+sudo service mysql stop
+# use master.my.cnf for master db, slave.my.cnf for slave db
+sudo cp atav-database/config/master.my.cnf /etc/my.cnf
+sudo service mysql start
 ```
 
 ## Create ATAV Database, Load Data, Setup Backup and Restore
@@ -81,6 +74,7 @@ gunzip atav-database/data/atavdb_load_data/*
 ```
 mysql -h 127.0.0.1 -uroot -proot -e "create database atavdb"
 mysql -h 127.0.0.1 -uroot -proot atavdb < atav-database/data/atavdb_schema.sql
+mysql -h 127.0.0.1 -uroot -proot atavdb < atav-database/data/externaldb_schema.sql 
 ```
 
 #### Load testing data
