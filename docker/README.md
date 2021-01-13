@@ -42,10 +42,9 @@ docker run -d --name atavdb \
 percona/percona-server:5.6.45
 ```
 
-#### Initialize ATAV database schema
+#### Restore database schema
 ```
-docker exec -i atavdb mysql -uroot -proot -e "create database atavdb"
-docker exec -i atavdb mysql -uroot -proot atavdb < ./data/atavdb_schema.sql
+docker exec -i atavdb mysql -uroot -proot < atav-database/data/atavdb_schema.sql
 docker exec -i atavdb mysql -uroot -proot < atav-database/data/externaldb_schema.sql
 ```
 
