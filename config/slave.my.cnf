@@ -4,13 +4,13 @@
 # server-id                          = 102
 
 # TokuDB - uncomment below settings after tokudb engine and tokubackup enabled
-# default_storage_engine             = TokuDB
-# tokudb_row_format                  = TOKUDB_ZLIB
-# tokudb_rpl_unique_checks           = 0
-# tokudb_rpl_lookup_rows             = 0
+default_storage_engine             = TokuDB
+tokudb_row_format                  = TOKUDB_ZLIB
+tokudb_rpl_unique_checks           = 0
+tokudb_rpl_lookup_rows             = 0
 # Make slave db read-only
-# read_only                          = 1
-# super_read_only                    = 1
+read_only                          = 1
+super_read_only                    = 1
 
 # GENERAL #
 socket                             = /var/lib/mysql/mysql.sock

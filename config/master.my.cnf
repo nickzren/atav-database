@@ -4,10 +4,10 @@
 # server-id                          = 101
 
 # TokuDB - uncomment below settings after tokudb engine and tokubackup enabled
-# default_storage_engine             = TokuDB
-# tokudb_row_format                  = TOKUDB_ZLIB
-# tokudb_commit_sync                 = ON 
-# tokudb_fsync_log_period            = 0
+default_storage_engine             = TokuDB
+tokudb_row_format                  = TOKUDB_ZLIB
+tokudb_commit_sync                 = ON 
+tokudb_fsync_log_period            = 0
 
 # GENERAL #
 socket                             = /var/lib/mysql/mysql.sock
