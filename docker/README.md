@@ -55,6 +55,19 @@ gunzip atav-database/data/atavdb_load_data/*
 for file in atav-database/data/atavdb_load_data/*; do docker exec -i atavdb mysql -uroot -proot atavdb -e "load data infile '/var/lib/mysql-files/atavdb_load_data/${file##*/}' into table ${file##*/}" ; done
 ```
 
+## Setup for ATAV CLI and Data Browser
+
+#### Add mysql user
+```
+# ATAV CLI
+docker exec -i atavdb mysql -uroot -proot -e "CREATE USER 'atav'@'%' IDENTIFIED BY 'atav'"
+docker exec -i atavdb mysql -uroot -proot -e "GRANT SELECT, INSERT, CREATE, CREATE TEMPORARY TABLES ON *.* TO 'atav'@'%'"
+
+# ATAV Data Browser
+docker exec -i atavdb mysql -uroot -proot -e "CREATE USER 'atavdb'@'%' IDENTIFIED BY 'atavdb'"
+docker exec -i atavdb mysql -uroot -proot -e "GRANT SELECT ON *.* TO 'atavdb'@'%'"
+```
+
 ## Check
 
 #### Check database records
@@ -69,7 +82,6 @@ mysql -h127.0.0.1 -uroot -proot atavdb -P 3333 -e "show table status"
 ```
 docker exec -it atavdb bash
 ```
-
 
 
 
