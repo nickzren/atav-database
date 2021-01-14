@@ -21,8 +21,9 @@ The instruction of Docker setup for ATAV database.
 
 ## Run
 
+#### Download repo
 ```
-cd atav-database
+git clone https://github.com/nickzren/atav-database
 ```
 
 #### Delete and Create data volumn
@@ -35,7 +36,7 @@ docker volume create atavdb_mysqldata
 ```
 docker run -d --name atavdb \
 -v atavdb_mysqldata:/var/lib/mysql:rw \
--v $(pwd)/data:/var/lib/mysql-files:rw \
+-v $(pwd)/atav-database/data/:/var/lib/mysql-files:rw \
 -p 3333:3306 \
 -e MYSQL_ROOT_PASSWORD=root \
 -e INIT_TOKUDB=1 \
@@ -50,8 +51,8 @@ docker exec -i atavdb mysql -uroot -proot < atav-database/data/externaldb_schema
 
 #### Load testing data
 ```
-gunzip ./data/atavdb_load_data/*
-for file in ./data/atavdb_load_data/*; do docker exec -i atavdb mysql -uroot -proot atavdb -e "load data infile '/var/lib/mysql-files/atavdb_load_data/${file##*/}' into table ${file##*/}" ; done
+gunzip atav-database/data/atavdb_load_data/*
+for file in atav-database/data/atavdb_load_data/*; do docker exec -i atavdb mysql -uroot -proot atavdb -e "load data infile '/var/lib/mysql-files/atavdb_load_data/${file##*/}' into table ${file##*/}" ; done
 ```
 
 ## Check
