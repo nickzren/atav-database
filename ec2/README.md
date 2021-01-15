@@ -14,11 +14,6 @@ The instruction of AWS EC2 setup for ATAV database.
 
 ## Tool Installation
 
-#### Access your instance and perform a quick update
-```
-sudo yum update -y
-```
-
 #### Install Git and download repo
 ```
 sudo yum install git -y
