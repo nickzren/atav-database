@@ -10,7 +10,7 @@ The instruction of AWS EC2 setup for ATAV database.
 1. Choose an Amazon Machine Image: Amazon Linux 2 AMI (HVM)
 2. Choose an Instance Type: t3.medium (test/dev)
 3. Configure Instance Details: default
-4. Add Storage: 8GB gp2 (test/dev)
+4. Add Storage: 300GB gp2 (test/dev)
 
 ## Tool Installation
 
@@ -107,6 +107,30 @@ sudo rm -rf /var/lib/mysql
 sudo rm -f /etc/my.cnf
 
 sudo yum -q install Percona-Server-tokudb-56-5.6.45-rel86.1.el7
+```
+
+## Restore externaldb data
+
+#### Download data
+```
+wget https://www.dropbox.com/s/aqmvrbvjzucbakw/externaldb.tar
+```
+
+#### Extract data
+```
+tar -xvf externaldb.tar -C atav-database/data/externaldb_load_data/ --strip 1 --exclude '.*'
+```
+
+#### Unzip data
+```
+gunzip -r atav-database/data/externaldb_load_data/
+```
+
+#### Load data (5 hours)
+```
+# start a screen session for data loading 
+screen -R load_data 
+for file in atav-database/data/externaldb_load_data/*; do mysql -h 127.0.0.1 -uroot -proot -e "load data local infile 'atav-database/data/externaldb_load_data/${file##*/}' into table ${file##*/}" ; done
 ```
 
 ## Setup for ATAV CLI and Data Browser
