@@ -19,13 +19,14 @@ if __name__ == "__main__":
     # parse command 
     sample_name = sys.argv[1]
     sample_id = sys.argv[2]
-    # input_file_dir = sys.argv[3]
+    input_dir = sys.argv[3]
+    input_dir += os.path.sep 
 
     dont_load_data = False
     data_type = "DP"
     
     for chromosome in CHROMs.iterkeys(): 
-        fn = "{sample_name}.{sample_id}_coverage_binned_1000_chr{chromosome}.txt".format(sample_name = sample_name, sample_id = sample_id, chromosome = chromosome )
+        fn = input_dir + "{sample_name}.{sample_id}_coverage_binned_1000_chr{chromosome}.txt".format(sample_name = sample_name, sample_id = sample_id, chromosome = chromosome )
         if not os.path.isfile(fn):
             continue 
         

@@ -84,6 +84,6 @@ if __name__ == "__main__":
     output_base += os.path.sep 
 	
     run_coverage_binning(sample_name, sample_id, bam_file, output_base)
-    #split_subset_DPBins(sample_name, sample_id, output_base)
+    split_subset_DPBins(sample_name, sample_id, output_base)
 
         

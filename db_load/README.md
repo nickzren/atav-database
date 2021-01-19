@@ -7,8 +7,8 @@ This repo contains some simple demo scripts for processing vcf files, bam files 
 * Docker setup for atavdb  
 * mysql client
 
-## Step 0: set up atavdb with docker and run it
-1. Please check [ec2](../ec2) or [docker](../docker) to setup atav database.
+## Step 0: set up atavdb
+1. Please check [ec2](../ec2) or [docker](../docker) to setup atav database. Just need empty atavdb database created.
 2. Download repo
 ```
 git clone https://github.com/nickzren/atav-database
@@ -26,11 +26,11 @@ export DB_PASSWORD='dbload'
 wget https://www.dropbox.com/s/gdduk6yt58teilx/homo_sapiens_variation_87_37.sql -P atav-database/data/db_load/
 mysql -h $DB_URL -u$DB_USER -p$DB_PASSWORD -P $DB_PORT -e "create database homo_sapiens_variation_87_37"
 mysql -h $DB_URL -u$DB_USER -p$DB_PASSWORD -P $DB_PORT homo_sapiens_variation_87_37 < atav-database/data/db_load/homo_sapiens_variation_87_37.sql
-
-# in case missing default effect ranking from atavdb
+```
+5. Restore default effect ranking data for atavdb
+```
 mysql -h $DB_URL -u$DB_USER -p$DB_PASSWORD -P $DB_PORT -e "load data local infile 'atav-database/data/db_load/atavdb.effect_ranking' ignore into table atavdb.effect_ranking"
 ```
-
 
 ## Step 1: download the test sample input data with the following commands
 ```
@@ -70,12 +70,11 @@ source activate dbload
 ## Step 5: parsing sample vcf file and bam file and uploading them to the atavdb 
 1. parse the bam file and upload converage bin data: 
 ```
-python data_prepare_cvg_bins_local.py NA12878_2 2 NA12878_2.2.realn.recal.bam
+# python $PATH_TO_DB_LOAD_DIR/data_prepare_cvg_bins_local.py $SAMPLE_NAME $SAMPLE_ID $PATH_TO_BAM_FILE $OUTPUT_DIR
 python atav-database/db_load/data_prepare_cvg_bins_local.py NA12878_2 2 atav-database/data/db_load/sample/exome/NA12878_2/raw/NA12878_2.2.realn.recal.bam atav-database/data/db_load/sample/exome/NA12878_2/load_data/
 
-
-
-python data_load_cvg_bins.py NA12878_2 2
+# python $PATH_TO_DB_LOAD_DIR/data_load_cvg_bins.py $SAMPLE_NAME $SAMPLE_ID $INPUT_DIR
+python atav-database/db_load/data_load_cvg_bins.py NA12878_2 2 atav-database/data/db_load/sample/exome/NA12878_2/load_data/
 ```
 
 2. parse the vcf file and upload the variant data:
@@ -86,5 +85,3 @@ python atav-database/db_load/data_prepare_variants_local.py NA12878_2 2 atav-dat
 # python $PATH_TO_DB_LOAD_DIR/data_prepare_variants_local.py $SAMPLE_NAME $SAMPLE_ID $INTPUT_DIR
 python atav-database/db_load/data_load_variants.py NA12878_2 2 atav-database/data/db_load/sample/exome/NA12878_2/load_data/
 ```
-
-Here NA12878_2 is a user defined sample name; 2 is sample id. 
