@@ -137,6 +137,12 @@ for file in atav-database/data/externaldb_load_data/*; do mysql -h 127.0.0.1 -ur
 
 #### Add mysql user
 ```
+# ATAV DB Load
+mysql -h 127.0.0.1 -uroot -proot -e "CREATE USER 'dbload'@'localhost' IDENTIFIED BY 'dbload'"
+mysql -h 127.0.0.1 -uroot -proot -e "CREATE USER 'dbload'@'%' IDENTIFIED BY 'dbload'"
+mysql -h 127.0.0.1 -uroot -proot -e "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, FILE, INDEX, ALTER, LOCK TABLES ON *.* TO 'dbload'@'localhost'"
+mysql -h 127.0.0.1 -uroot -proot -e "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, FILE, INDEX, ALTER, LOCK TABLES ON *.* TO 'dbload'@'%'"
+
 # ATAV CLI
 mysql -h 127.0.0.1 -uroot -proot -e "CREATE USER 'atav'@'localhost' IDENTIFIED BY 'atav'"
 mysql -h 127.0.0.1 -uroot -proot -e "CREATE USER 'atav'@'%' IDENTIFIED BY 'atav'"

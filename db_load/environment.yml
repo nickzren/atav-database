@@ -1,0 +1,18 @@
+name: dbload
+channels:
+  - anaconda
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - mysql-connector-c=6.1
+  - mysqlclient=1.4.6
+  - htslib=1.11
+  - pyfaidx=0.5.9
+  - pytabix=0.1
+  - samtools=1.11
+  - tabix
+  - python=2.7
+
+prefix: /anaconda3/envs/dbload
+

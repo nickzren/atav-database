@@ -59,6 +59,10 @@ for file in atav-database/data/atavdb_load_data/*; do docker exec -i atavdb mysq
 
 #### Add mysql user
 ```
+# ATAV DB Load
+docker exec -i atavdb mysql -uroot -proot -e "CREATE USER 'dbload'@'%' IDENTIFIED BY 'dbload'"
+docker exec -i atavdb mysql -uroot -proot -e "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, FILE, INDEX, ALTER, LOCK TABLES ON *.* TO 'dbload'@'%'"
+
 # ATAV CLI
 docker exec -i atavdb mysql -uroot -proot -e "CREATE USER 'atav'@'%' IDENTIFIED BY 'atav'"
 docker exec -i atavdb mysql -uroot -proot -e "GRANT SELECT, INSERT, CREATE, CREATE TEMPORARY TABLES ON *.* TO 'atav'@'%'"

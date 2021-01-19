@@ -1,3 +1,7 @@
-
 .DS_Store
-data/.DS_Store
+data/db_load/homo_sapiens_variation_87_37.sql
+data/db_load/sample/exome/*/
+data/db_load/sample/genome/*/
+db_load/Roche_SeqCap_EZ_Exome_v3_capture_1kbBlocksIds.txt
+db_load/hs37d5.fa*
+db_load/DP1KbBins_rc1
