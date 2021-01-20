@@ -8,9 +8,9 @@ The instruction of AWS EC2 setup for ATAV database.
 ## Launch Amazon EC2
 
 1. Choose an Amazon Machine Image: Amazon Linux 2 AMI (HVM)
-2. Choose an Instance Type: t3.medium (test/dev)
+2. Choose an Instance Type: t3.2xlarge (test/dev)
 3. Configure Instance Details: default
-4. Add Storage: 300GB gp2 (test/dev)
+4. Add Storage: 300GB gp3 (test/dev)
 
 ## Tool Installation
 
