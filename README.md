@@ -13,4 +13,5 @@ Check [db_load](db_load) to setup demo scripts for parsing VCF, BAM and load dat
 #### ATAV Components:
 * [ATAV Command Line Tool](https://github.com/nickzren/atav)
 * [ATAV Data Broswer](https://github.com/nickzren/atavdb)
+* [ATAV Database](https://github.com/nickzren/atav-database)
 * [ATAV Paper](https://www.biorxiv.org/content/10.1101/2020.06.08.136507v3)
