@@ -8,7 +8,7 @@ This repo contains some simple demo scripts for processing vcf files, bam files 
 * mysql client
 
 ## Step 0: set up atavdb
-1. Please check [ec2](../ec2) or [docker](../docker) to setup atav database. (only need to create empty atavdb database)
+1. Please check [ec2](../ec2) or [docker](../docker) to setup atav database. (only require empty atavdb database, do not require externaldb)
 2. Initialize database connection settings
 ```
 export DB_URL='127.0.0.1'
