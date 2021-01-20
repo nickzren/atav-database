@@ -4,7 +4,7 @@ This repo contains some simple demo scripts for processing vcf files, bam files 
 
 ## Requirement
 * Conda package management system (python2)
-* Docker setup for atavdb  
+* Amazon Linux or Docker setup for atav database  
 * mysql client
 
 ## Step 0: set up atavdb
