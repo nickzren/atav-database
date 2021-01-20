@@ -8,6 +8,8 @@ Check [docker](docker) to setup in docker for test/dev purpose.
 
 Check [ec2](ec2) to setup in AWS EC2 for production purpose.
 
+Check [db_load](db_load) to setup demo scripts for parsing VCF, BAM and load data into ATAV database.
+
 #### ATAV Components:
 * [ATAV Command Line Tool](https://github.com/nickzren/atav)
 * [ATAV Data Broswer](https://github.com/nickzren/atavdb)
