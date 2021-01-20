@@ -8,12 +8,8 @@ This repo contains some simple demo scripts for processing vcf files, bam files 
 * mysql client
 
 ## Step 0: set up atavdb
-1. Please check [ec2](../ec2) or [docker](../docker) to setup atav database. Just need empty atavdb database created.
-2. Download repo
-```
-git clone https://github.com/nickzren/atav-database
-```
-3. Initialize database connection settings
+1. Please check [ec2](../ec2) or [docker](../docker) to setup atav database. (only need to create empty atavdb database)
+2. Initialize database connection settings
 ```
 export DB_URL='127.0.0.1'
 export DB_PORT='3306' # for docker atav database example, it's 3333
@@ -21,13 +17,13 @@ export DB_NAME='atavdb'
 export DB_USER='dbload'
 export DB_PASSWORD='dbload'
 ```
-4. Besides, set up a separate database _homo_sapiens_variation_87_37_, and import the data into the databse. _homo_sapiens_variation_87_37_ is used to calcualte the polyphen score for missense variants. 
+3. Besides, set up a separate database _homo_sapiens_variation_87_37_, and import the data into the databse. _homo_sapiens_variation_87_37_ is used to calcualte the polyphen score for missense variants. 
 ```
 wget https://www.dropbox.com/s/gdduk6yt58teilx/homo_sapiens_variation_87_37.sql -P atav-database/data/db_load/
 mysql -h $DB_URL -u$DB_USER -p$DB_PASSWORD -P $DB_PORT -e "create database homo_sapiens_variation_87_37"
 mysql -h $DB_URL -u$DB_USER -p$DB_PASSWORD -P $DB_PORT homo_sapiens_variation_87_37 < atav-database/data/db_load/homo_sapiens_variation_87_37.sql
 ```
-5. Restore default effect ranking data for atavdb
+4. Restore default effect ranking data for atavdb
 ```
 mysql -h $DB_URL -u$DB_USER -p$DB_PASSWORD -P $DB_PORT -e "load data local infile 'atav-database/data/db_load/atavdb.effect_ranking' ignore into table atavdb.effect_ranking"
 ```
@@ -58,13 +54,30 @@ gunzip atav-database/db_load/hs37d5.fa.gz
 ## Step 3: compile DP1KbBins_rc1.cpp
 This cpp program is used to generate the bin data from sample bam files. 
 ```
+sudo yum install gcc-c++ # install g++ if missing from amazon linux
 g++ -o atav-database/db_load/DP1KbBins_rc1 atav-database/db_load/DP1KbBins_rc1.cpp -lm
 ```
 
 ## Step 4: set up a conda virtual environment (python2)
 ```
-conda env create -f environment.yml
+# install miniconda2 if missing from amazon linux 
+wget https://repo.anaconda.com/miniconda/Miniconda2-latest-Linux-x86_64.sh
+chmod 700 Miniconda2-latest-Linux-x86_64.sh
+source /home/ec2-user/.bashrc
+
+# create dbload environment and install dependent libs
+conda create -n dbload \
+python=2.7 \
+mysql-connector-c=6.1 \
+mysqlclient=1.4.6 \
+pyfaidx=0.5.9 \
+pytabix=0.02 \
+htslib=1.9 \
+tabix
 source activate dbload
+# install below two separately because of some conflicting problem
+conda install -c bioconda pytabix
+conda install -c bioconda samtools=1.9 
 ```
 
 ## Step 5: parsing sample vcf file and bam file and uploading them to the atavdb 
