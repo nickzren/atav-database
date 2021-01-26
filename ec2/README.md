@@ -14,10 +14,9 @@ The instruction of AWS EC2 setup for ATAV database.
 
 ## Tool Installation
 
-#### Install Git and download repo
+#### Prepare to compile software on an Amazon Linux instance
 ```
-sudo yum install git -y
-git clone https://github.com/nickzren/atav-database
+sudo yum groupinstall "Development Tools"
 ```
 
 #### Install percona tokudb 5.6.45
@@ -50,6 +49,11 @@ sudo service mysql restart
 sudo ps_tokudb_admin --enable-backup -uroot -proot
 ```
 
+#### Download atav-database repo
+```
+git clone https://github.com/nickzren/atav-database
+```
+
 #### Replace default my.cnf
 ```
 sudo service mysql stop
@@ -60,15 +64,15 @@ sudo service mysql start
 
 ## Create ATAV Database, Load Data, Setup Backup and Restore
 
-#### Unzip testing data
-```
-gunzip atav-database/data/atavdb_load_data/*
-```
-
 #### Restore database schema
 ```
 mysql -h 127.0.0.1 -uroot -proot < atav-database/data/atavdb_schema.sql
 mysql -h 127.0.0.1 -uroot -proot < atav-database/data/externaldb_schema.sql 
+```
+
+#### Unzip testing data
+```
+gunzip atav-database/data/atavdb_load_data/*
 ```
 
 #### Load testing data
