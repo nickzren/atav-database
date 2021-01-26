@@ -8,7 +8,7 @@ This repo contains some simple demo scripts for processing vcf files, bam files 
 * mysql client
 
 ## Step 0: set up atavdb
-1. Please check [ec2](../ec2) or [docker](../docker) to setup atav database. (only require empty atavdb database, do not require externaldb)
+1. Please check [ec2](../ec2) to setup atav database. (only require empty atavdb database, do not require externaldb)
 2. Initialize database connection settings
 ```
 export DB_URL='127.0.0.1'
@@ -54,7 +54,7 @@ gunzip atav-database/db_load/hs37d5.fa.gz
 ## Step 3: compile DP1KbBins_rc1.cpp
 This cpp program is used to generate the bin data from sample bam files. 
 ```
-sudo yum install gcc-c++ # install g++ if missing from amazon linux
+# sudo yum groupinstall "Development Tools"
 g++ -o atav-database/db_load/DP1KbBins_rc1 atav-database/db_load/DP1KbBins_rc1.cpp -lm
 ```
 
@@ -62,22 +62,21 @@ g++ -o atav-database/db_load/DP1KbBins_rc1 atav-database/db_load/DP1KbBins_rc1.c
 ```
 # install miniconda2 if missing from amazon linux 
 wget https://repo.anaconda.com/miniconda/Miniconda2-latest-Linux-x86_64.sh
-chmod 700 Miniconda2-latest-Linux-x86_64.sh
+chmod 755 Miniconda2-latest-Linux-x86_64.sh
+./Miniconda2-latest-Linux-x86_64.sh
 source /home/ec2-user/.bashrc
+conda config --add channels bioconda
 
 # create dbload environment and install dependent libs
 conda create -n dbload \
 python=2.7 \
-mysql-connector-c=6.1 \
-mysqlclient=1.4.6 \
-pyfaidx=0.5.9 \
-pytabix=0.02 \
-htslib=1.9 \
-tabix
-source activate dbload
-# install below two separately because of some conflicting problem
-conda install -c bioconda pytabix
-conda install -c bioconda samtools=1.9 
+mysql-connector-c \
+mysqlclient \
+pyfaidx \
+pytabix \
+htslib \
+tabix \
+samtools 
 ```
 
 ## Step 5: parsing sample vcf file and bam file and uploading them to the atavdb 
