@@ -98,3 +98,18 @@ python atav-database/db_load/data_prepare_variants_local.py NA12878_2 2 atav-dat
 # python $PATH_TO_DB_LOAD_DIR/data_prepare_variants_local.py $SAMPLE_NAME $SAMPLE_ID $INTPUT_DIR
 python atav-database/db_load/data_load_variants.py NA12878_2 2 atav-database/data/db_load/sample/exome/NA12878_2/load_data/
 ```
+
+## How does ATAV annotate raw VCFs?
+
+ATAV uses ClinEff - the clinical version of SnpEff. However, ClinEff requires a license, so SnpEff is a good alternative: freely available, open source, and has no license restrictions for research work. Available at: https://pcingola.github.io/SnpEff/
+```
+# create the annotated the VCF using the standard config file (no modifications needed), a dbDNP file (can be obtained from https://www.ncbi.nlm.nih.gov/variation/docs/human_variation_vcf) and the desired genome version (GRCh37.87 in this case):
+java -jar ClinEff.jar -c clinEff.config -v -db dbsnp_fixed.vcf.gz GRCh37.87 raw.vcf > annotated.vcf
+
+# compress the VCF file (which can be big for whole genome samples):
+bgzip -f annotated.vcf
+
+# create an index file:
+tabix -f annotated.vcf.gz
+```
+
