@@ -80,7 +80,12 @@ samtools
 ```
 
 ## Step 5: parsing sample vcf file and bam file and uploading them to the atavdb 
-1. parse the bam file and upload converage bin data: 
+1. Switch to dbload conda environment
+```
+conda activate dbload
+```
+
+2. parse the bam file and upload converage bin data: 
 ```
 # python $PATH_TO_DB_LOAD_DIR/data_prepare_cvg_bins_local.py $SAMPLE_NAME $SAMPLE_ID $PATH_TO_BAM_FILE $OUTPUT_DIR
 python atav-database/db_load/data_prepare_cvg_bins_local.py NA12878_2 2 atav-database/data/db_load/sample/exome/NA12878_2/raw/NA12878_2.2.realn.recal.bam atav-database/data/db_load/sample/exome/NA12878_2/load_data/
@@ -89,7 +94,7 @@ python atav-database/db_load/data_prepare_cvg_bins_local.py NA12878_2 2 atav-dat
 python atav-database/db_load/data_load_cvg_bins.py NA12878_2 2 atav-database/data/db_load/sample/exome/NA12878_2/load_data/
 ```
 
-2. parse the vcf file and upload the variant data:
+3. parse the vcf file and upload the variant data:
 ```
 # python $PATH_TO_DB_LOAD_DIR/data_prepare_variants_local.py $SAMPLE_NAME $SAMPLE_ID $PATH_TO_ANNOTATED_VCF_FILE $OUTPUT_DIR
 python atav-database/db_load/data_prepare_variants_local.py NA12878_2 2 atav-database/data/db_load/sample/exome/NA12878_2/raw/NA12878_2.2.analysisReady.annotated.vcf.gz atav-database/data/db_load/sample/exome/NA12878_2/load_data/
@@ -98,7 +103,7 @@ python atav-database/db_load/data_prepare_variants_local.py NA12878_2 2 atav-dat
 python atav-database/db_load/data_load_variants.py NA12878_2 2 atav-database/data/db_load/sample/exome/NA12878_2/load_data/
 ```
 
-3. prepare a csv file containing relevent sample information similar to the atav-database/db_load/demo_sample.csv and run the script below to initialize and mark the sample in atavdb
+4. prepare a csv file containing relevent sample information similar to the atav-database/db_load/demo_sample.csv and run the script below to initialize and mark the sample in atavdb
 ```
 python atav-database/db_load/init_and_mark_sample.py atav-database/db_load/demo_sample.csv 
 ```
