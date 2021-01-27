@@ -100,7 +100,7 @@ python atav-database/db_load/data_load_variants.py NA12878_2 2 atav-database/dat
 
 3. prepare a csv file containing relevent sample information similar to the atav-database/db_load/demo_sample.csv and run the script below to initialize and mark the sample in atavdb
 ```
-python atav-database/db_load/init_samples.py atav-database/db_load/demo_sample.csv 
+python atav-database/db_load/init_and_mark_sample.py atav-database/db_load/demo_sample.csv 
 ```
 
 ## How does ATAV annotate raw VCFs?
