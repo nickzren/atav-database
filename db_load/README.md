@@ -98,6 +98,11 @@ python atav-database/db_load/data_prepare_variants_local.py NA12878_2 2 atav-dat
 python atav-database/db_load/data_load_variants.py NA12878_2 2 atav-database/data/db_load/sample/exome/NA12878_2/load_data/
 ```
 
+3. prepare a csv file containing relevent sample information similar to the atav-database/db_load/demo_sample.csv and run the script below to initialize and mark the sample in atavdb
+```
+python atav-database/db_load/init_samples.py atav-database/db_load/demo_sample.csv 
+```
+
 ## How does ATAV annotate raw VCFs?
 
 ATAV uses ClinEff - the clinical version of SnpEff. However, ClinEff requires a license, so SnpEff is a good alternative: freely available, open source, and has no license restrictions for research work. Available at: https://pcingola.github.io/SnpEff/

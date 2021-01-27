@@ -561,7 +561,7 @@ def parse_vcf(vcf, CHROM, sample_id, sample_name, min_dp_to_include, output_base
                 INFO = create_INFO_dict(fields["INFO"])
                 if fields["FILTER"] == "PASS":
                     INFO["FILTER"] = "PASS"
-                ### WTF?!?
+                
                 elif fields["FILTER"] == "SNP_filter":
                     INFO["FILTER"] = "FAIL"
                 elif fields["FILTER"] == "INDEL_filter":

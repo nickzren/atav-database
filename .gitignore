@@ -5,3 +5,4 @@ data/db_load/sample/genome/*/
 db_load/Roche_SeqCap_EZ_Exome_v3_capture_1kbBlocksIds.txt
 db_load/hs37d5.fa*
 db_load/DP1KbBins_rc1
+db_load/*.pyc
