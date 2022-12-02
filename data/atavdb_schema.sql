@@ -2413,23 +2413,24 @@ CREATE TABLE `sample` (
   `experiment_id` int(11) NOT NULL DEFAULT '0',
   `analysis_id` int(11) NOT NULL DEFAULT '0',
   `seq_gender` enum('M','F','Ambiguous') DEFAULT NULL,
+  `self_decl_gender` enum('M','F','Unknown') DEFAULT NULL,
   `broad_phenotype` enum('amyotrophic lateral sclerosis','autoimmune disease','bone disease','brain malformation','cancer','cardiovascular disease','congenital disorder','control','control mild neuropsychiatric disease','covid-19','dementia','dermatological disease','diseases that affect the ear','endocrine disorder','epilepsy','febrile seizures','fetal ultrasound anomaly','gastrointestinal disease','healthy family member','hematological disease','infectious disease','intellectual disability','kidney and urological disease','liver disease','metabolic disease','neurodegenerative','nonhuman','obsessive compulsive disorder','ophthalmic disease','other','other neurodevelopmental disease','other neurological disease','other neuropsychiatric disease','primary immune deficiency','pulmonary disease','schizophrenia','sudden death','alzheimers disease','cerebral palsy') DEFAULT NULL,
+  `family_id` varchar(255) DEFAULT NULL,
+  `family_relation_proband` varchar(255) DEFAULT NULL,
   `ancestry` enum('African','Caucasian','EastAsian','Hispanic','MiddleEastern','SouthAsian') DEFAULT NULL,
   `available_control_use` tinyint(1) unsigned DEFAULT '0',
   `subproject_id` int(11) DEFAULT '0',
+  `low_quality` tinyint(1) unsigned DEFAULT '0',
   `s_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `s_insert` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`sample_id`),
   UNIQUE KEY `sample_idx` (`sample_name`,`sample_type`,`capture_kit`,`sample_finished`),
   KEY `initialization_idx` (`sample_finished`),
   KEY `prep_idx` (`prep_id`),
-  KEY `sample_failure_idx` (`sample_failure`),
   KEY `sample_type_idx` (`sample_type`),
   KEY `sample_name_idx` (`sample_name`),
-  KEY `broad_phenotype_idx` (`broad_phenotype`),
-  KEY `ethnicity_idx` (`ancestry`),
-  KEY `available_control_use_idx` (`available_control_use`),
-  KEY `subproject_id_idx` (`subproject_id`)
+  KEY `atavdb_idx` (`sample_type`,`sample_finished`,`sample_failure`,`broad_phenotype`,`available_control_use`,`low_quality`),
+  KEY `experiment_id_idx` (`experiment_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2461,7 +2462,8 @@ CREATE TABLE `variant_chr1` (
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
   KEY `has_high_quality_call_idx` (`has_high_quality_call`),
-  KEY `variant_gene_idx` (`variant_id`,`gene`)
+  KEY `variant_gene_idx` (`variant_id`,`gene`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2492,7 +2494,8 @@ CREATE TABLE `variant_chr10` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2523,7 +2526,8 @@ CREATE TABLE `variant_chr11` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2554,7 +2558,8 @@ CREATE TABLE `variant_chr12` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2585,7 +2590,8 @@ CREATE TABLE `variant_chr13` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2616,7 +2622,8 @@ CREATE TABLE `variant_chr14` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2647,7 +2654,8 @@ CREATE TABLE `variant_chr15` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2678,7 +2686,8 @@ CREATE TABLE `variant_chr16` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2709,7 +2718,8 @@ CREATE TABLE `variant_chr17` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2740,7 +2750,8 @@ CREATE TABLE `variant_chr18` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2771,7 +2782,8 @@ CREATE TABLE `variant_chr19` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2802,7 +2814,8 @@ CREATE TABLE `variant_chr2` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2833,7 +2846,8 @@ CREATE TABLE `variant_chr20` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2864,7 +2878,8 @@ CREATE TABLE `variant_chr21` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2895,7 +2910,8 @@ CREATE TABLE `variant_chr22` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2926,7 +2942,8 @@ CREATE TABLE `variant_chr3` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2957,7 +2974,8 @@ CREATE TABLE `variant_chr4` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2988,7 +3006,8 @@ CREATE TABLE `variant_chr5` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -3019,7 +3038,8 @@ CREATE TABLE `variant_chr6` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -3050,7 +3070,8 @@ CREATE TABLE `variant_chr7` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -3081,7 +3102,8 @@ CREATE TABLE `variant_chr8` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -3112,7 +3134,8 @@ CREATE TABLE `variant_chr9` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -3144,7 +3167,8 @@ CREATE TABLE `variant_chrMT` (
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
   KEY `has_high_quality_call_idx` (`has_high_quality_call`),
-  KEY `variant_gene_idx` (`variant_id`,`gene`)
+  KEY `variant_gene_idx` (`variant_id`,`gene`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -3175,7 +3199,8 @@ CREATE TABLE `variant_chrX` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -3206,7 +3231,8 @@ CREATE TABLE `variant_chrY` (
   KEY `gene_idx` (`gene`),
   KEY `effect_idx` (`effect_id`),
   KEY `variant_exists_idx` (`POS`,`indel_length`,`REF`,`ALT`,`variant_id`,`effect_id`,`has_high_quality_call`),
-  KEY `has_high_quality_call_idx` (`has_high_quality_call`)
+  KEY `has_high_quality_call_idx` (`has_high_quality_call`),
+  KEY `transcript_idx` (`transcript_stable_id`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -3219,4 +3245,4 @@ CREATE TABLE `variant_chrY` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-07 17:47:28
+-- Dump completed on 2022-12-01 21:38:10
