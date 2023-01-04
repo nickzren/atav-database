@@ -3189,13 +3189,212 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `igm_af` /*!40100 DEFAULT CHARACTER SET
 USE `igm_af`;
 
 --
--- Table structure for table `variant_111320`
+-- Table structure for table `default_control_variant_030421`
 --
 
-DROP TABLE IF EXISTS `variant_111320`;
+DROP TABLE IF EXISTS `default_control_variant_030421`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `variant_111320` (
+CREATE TABLE `default_control_variant_030421` (
+  `variant_id` int(10) NOT NULL,
+  `chr` varchar(2) NOT NULL,
+  `pos` int(10) NOT NULL,
+  `ref` varchar(1024) NOT NULL,
+  `alt` varchar(1024) NOT NULL,
+  `ac` int(10) NOT NULL,
+  `an` int(10) NOT NULL,
+  `af` float DEFAULT NULL,
+  `ns` int(10) NOT NULL,
+  `nhom` int(10) NOT NULL,
+  PRIMARY KEY (`chr`,`variant_id`),
+  KEY `variant_key` (`chr`,`pos`,`ref`,`alt`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `default_control_variant_092622`
+--
+
+DROP TABLE IF EXISTS `default_control_variant_092622`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `default_control_variant_092622` (
+  `variant_id` int(10) NOT NULL,
+  `chr` varchar(2) NOT NULL,
+  `pos` int(10) NOT NULL,
+  `ref` varchar(1024) NOT NULL,
+  `alt` varchar(1024) NOT NULL,
+  `ac` int(10) NOT NULL,
+  `an` int(10) NOT NULL,
+  `af` float DEFAULT NULL,
+  `ns` int(10) NOT NULL,
+  `nhom` int(10) NOT NULL,
+  PRIMARY KEY (`chr`,`variant_id`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `variant_010322`
+--
+
+DROP TABLE IF EXISTS `variant_010322`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `variant_010322` (
+  `variant_id` int(10) NOT NULL,
+  `chr` varchar(2) NOT NULL,
+  `pos` int(10) NOT NULL,
+  `ref` varchar(1024) NOT NULL,
+  `alt` varchar(1024) NOT NULL,
+  `ac` int(10) NOT NULL,
+  `an` int(10) NOT NULL,
+  `af` float DEFAULT NULL,
+  `ns` int(10) NOT NULL,
+  `nhom` int(10) NOT NULL,
+  PRIMARY KEY (`chr`,`variant_id`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `variant_011821`
+--
+
+DROP TABLE IF EXISTS `variant_011821`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `variant_011821` (
+  `variant_id` int(10) NOT NULL,
+  `chr` varchar(2) NOT NULL,
+  `pos` int(10) NOT NULL,
+  `ref` varchar(1024) NOT NULL,
+  `alt` varchar(1024) NOT NULL,
+  `ac` int(10) NOT NULL,
+  `an` int(10) NOT NULL,
+  `af` float DEFAULT NULL,
+  `ns` int(10) NOT NULL,
+  `nhom` int(10) NOT NULL,
+  PRIMARY KEY (`chr`,`variant_id`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `variant_042022`
+--
+
+DROP TABLE IF EXISTS `variant_042022`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `variant_042022` (
+  `variant_id` int(10) NOT NULL,
+  `chr` varchar(2) NOT NULL,
+  `pos` int(10) NOT NULL,
+  `ref` varchar(1024) NOT NULL,
+  `alt` varchar(1024) NOT NULL,
+  `ac` int(10) NOT NULL,
+  `an` int(10) NOT NULL,
+  `af` float DEFAULT NULL,
+  `ns` int(10) NOT NULL,
+  `nhom` int(10) NOT NULL,
+  PRIMARY KEY (`chr`,`variant_id`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `variant_042721`
+--
+
+DROP TABLE IF EXISTS `variant_042721`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `variant_042721` (
+  `variant_id` int(10) NOT NULL,
+  `chr` varchar(2) NOT NULL,
+  `pos` int(10) NOT NULL,
+  `ref` varchar(1024) NOT NULL,
+  `alt` varchar(1024) NOT NULL,
+  `ac` int(10) NOT NULL,
+  `an` int(10) NOT NULL,
+  `af` float DEFAULT NULL,
+  `ns` int(10) NOT NULL,
+  `nhom` int(10) NOT NULL,
+  PRIMARY KEY (`chr`,`variant_id`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `variant_071421`
+--
+
+DROP TABLE IF EXISTS `variant_071421`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `variant_071421` (
+  `variant_id` int(10) NOT NULL,
+  `chr` varchar(2) NOT NULL,
+  `pos` int(10) NOT NULL,
+  `ref` varchar(1024) NOT NULL,
+  `alt` varchar(1024) NOT NULL,
+  `ac` int(10) NOT NULL,
+  `an` int(10) NOT NULL,
+  `af` float DEFAULT NULL,
+  `ns` int(10) NOT NULL,
+  `nhom` int(10) NOT NULL,
+  PRIMARY KEY (`chr`,`variant_id`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `variant_071522`
+--
+
+DROP TABLE IF EXISTS `variant_071522`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `variant_071522` (
+  `variant_id` int(10) NOT NULL,
+  `chr` varchar(2) NOT NULL,
+  `pos` int(10) NOT NULL,
+  `ref` varchar(1024) NOT NULL,
+  `alt` varchar(1024) NOT NULL,
+  `ac` int(10) NOT NULL,
+  `an` int(10) NOT NULL,
+  `af` float DEFAULT NULL,
+  `ns` int(10) NOT NULL,
+  `nhom` int(10) NOT NULL,
+  PRIMARY KEY (`chr`,`variant_id`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `variant_093021`
+--
+
+DROP TABLE IF EXISTS `variant_093021`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `variant_093021` (
+  `variant_id` int(10) NOT NULL,
+  `chr` varchar(2) NOT NULL,
+  `pos` int(10) NOT NULL,
+  `ref` varchar(1024) NOT NULL,
+  `alt` varchar(1024) NOT NULL,
+  `ac` int(10) NOT NULL,
+  `an` int(10) NOT NULL,
+  `af` float DEFAULT NULL,
+  `ns` int(10) NOT NULL,
+  `nhom` int(10) NOT NULL,
+  PRIMARY KEY (`chr`,`variant_id`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `variant_101122`
+--
+
+DROP TABLE IF EXISTS `variant_101122`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `variant_101122` (
   `variant_id` int(10) NOT NULL,
   `chr` varchar(2) NOT NULL,
   `pos` int(10) NOT NULL,
@@ -3233,13 +3432,35 @@ CREATE TABLE `variant_112320` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `variant_subset_111320`
+-- Table structure for table `variant_subset_071522`
 --
 
-DROP TABLE IF EXISTS `variant_subset_111320`;
+DROP TABLE IF EXISTS `variant_subset_071522`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `variant_subset_111320` (
+CREATE TABLE `variant_subset_071522` (
+  `variant_id` int(10) NOT NULL,
+  `chr` varchar(2) NOT NULL,
+  `pos` int(10) NOT NULL,
+  `ref` varchar(1024) NOT NULL,
+  `alt` varchar(1024) NOT NULL,
+  `ac` int(10) NOT NULL,
+  `an` int(10) NOT NULL,
+  `af` float DEFAULT NULL,
+  `ns` int(10) NOT NULL,
+  `nhom` int(10) NOT NULL,
+  PRIMARY KEY (`chr`,`variant_id`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `variant_subset_101122`
+--
+
+DROP TABLE IF EXISTS `variant_subset_101122`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `variant_subset_101122` (
   `variant_id` int(10) NOT NULL,
   `chr` varchar(2) NOT NULL,
   `pos` int(10) NOT NULL,
@@ -3311,6 +3532,34 @@ DROP TABLE IF EXISTS `RecessiveCarrier_2015_12_09`;
 CREATE TABLE `RecessiveCarrier_2015_12_09` (
   `geneName` varchar(25) NOT NULL DEFAULT '',
   PRIMARY KEY (`geneName`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `acmg_v3`
+--
+
+DROP TABLE IF EXISTS `acmg_v3`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `acmg_v3` (
+  `gene` varchar(25) NOT NULL,
+  `ACMG` varchar(512) DEFAULT NULL,
+  PRIMARY KEY (`gene`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `acmg_v3_1`
+--
+
+DROP TABLE IF EXISTS `acmg_v3_1`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `acmg_v3_1` (
+  `gene` varchar(25) NOT NULL,
+  `ACMG` varchar(512) DEFAULT NULL,
+  PRIMARY KEY (`gene`)
 ) ENGINE=TokuDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -3442,6 +3691,51 @@ DROP TABLE IF EXISTS `clingen_2020_10_20`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `clingen_2020_10_20` (
+  `geneName` varchar(25) NOT NULL DEFAULT '',
+  `HaploinsufficiencyDesc` varchar(25) DEFAULT NULL,
+  `TriplosensitivityDesc` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`geneName`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clingen_2021_02_08`
+--
+
+DROP TABLE IF EXISTS `clingen_2021_02_08`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clingen_2021_02_08` (
+  `geneName` varchar(25) NOT NULL DEFAULT '',
+  `HaploinsufficiencyDesc` varchar(25) DEFAULT NULL,
+  `TriplosensitivityDesc` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`geneName`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clingen_2021_04_08`
+--
+
+DROP TABLE IF EXISTS `clingen_2021_04_08`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clingen_2021_04_08` (
+  `geneName` varchar(25) NOT NULL DEFAULT '',
+  `HaploinsufficiencyDesc` varchar(25) DEFAULT NULL,
+  `TriplosensitivityDesc` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`geneName`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clingen_2021_07_14`
+--
+
+DROP TABLE IF EXISTS `clingen_2021_07_14`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clingen_2021_07_14` (
   `geneName` varchar(25) NOT NULL DEFAULT '',
   `HaploinsufficiencyDesc` varchar(25) DEFAULT NULL,
   `TriplosensitivityDesc` varchar(25) DEFAULT NULL,
@@ -3713,6 +4007,293 @@ CREATE TABLE `clinvar_2020_10_20` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `clinvar_2021_02_08`
+--
+
+DROP TABLE IF EXISTS `clinvar_2021_02_08`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinvar_2021_02_08` (
+  `chr` varchar(2) NOT NULL DEFAULT '',
+  `pos` int(10) NOT NULL DEFAULT '0',
+  `ref` varchar(1023) NOT NULL DEFAULT '',
+  `alt` varchar(1023) NOT NULL DEFAULT '',
+  `HGVS` varchar(1023) DEFAULT NULL,
+  `ClinSource` varchar(1023) DEFAULT NULL,
+  `AlleleOrigin` int(10) DEFAULT NULL,
+  `ClinRevStat` varchar(255) DEFAULT NULL,
+  `ClinRevStar` int(10) DEFAULT NULL,
+  `ClinSig` varchar(255) DEFAULT NULL,
+  `ClinSigIncl` varchar(255) DEFAULT NULL,
+  `DiseaseDB` varchar(1023) DEFAULT NULL,
+  `DiseaseName` varchar(1023) DEFAULT NULL,
+  `PubmedID` varchar(255) DEFAULT NULL,
+  `rsID` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`chr`,`pos`,`ref`,`alt`),
+  KEY `ClinSig_idx` (`ClinSig`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clinvar_2021_04_08`
+--
+
+DROP TABLE IF EXISTS `clinvar_2021_04_08`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinvar_2021_04_08` (
+  `chr` varchar(2) NOT NULL DEFAULT '',
+  `pos` int(10) NOT NULL DEFAULT '0',
+  `ref` varchar(1023) NOT NULL DEFAULT '',
+  `alt` varchar(1023) NOT NULL DEFAULT '',
+  `HGVS` varchar(1023) DEFAULT NULL,
+  `ClinSource` varchar(1023) DEFAULT NULL,
+  `AlleleOrigin` int(10) DEFAULT NULL,
+  `ClinRevStat` varchar(255) DEFAULT NULL,
+  `ClinRevStar` int(10) DEFAULT NULL,
+  `ClinSig` varchar(255) DEFAULT NULL,
+  `ClinSigIncl` varchar(255) DEFAULT NULL,
+  `DiseaseDB` varchar(1023) DEFAULT NULL,
+  `DiseaseName` varchar(1023) DEFAULT NULL,
+  `PubmedID` varchar(255) DEFAULT NULL,
+  `rsID` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`chr`,`pos`,`ref`,`alt`),
+  KEY `ClinSig_idx` (`ClinSig`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clinvar_2021_07_14`
+--
+
+DROP TABLE IF EXISTS `clinvar_2021_07_14`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinvar_2021_07_14` (
+  `chr` varchar(2) NOT NULL DEFAULT '',
+  `pos` int(10) NOT NULL DEFAULT '0',
+  `ref` varchar(1023) NOT NULL DEFAULT '',
+  `alt` varchar(1023) NOT NULL DEFAULT '',
+  `HGVS` varchar(1023) DEFAULT NULL,
+  `ClinSource` varchar(1023) DEFAULT NULL,
+  `AlleleOrigin` int(10) DEFAULT NULL,
+  `ClinRevStat` varchar(255) DEFAULT NULL,
+  `ClinRevStar` int(10) DEFAULT NULL,
+  `ClinSig` varchar(255) DEFAULT NULL,
+  `ClinSigIncl` varchar(255) DEFAULT NULL,
+  `DiseaseDB` varchar(1023) DEFAULT NULL,
+  `DiseaseName` varchar(1023) DEFAULT NULL,
+  `PubmedID` varchar(255) DEFAULT NULL,
+  `rsID` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`chr`,`pos`,`ref`,`alt`),
+  KEY `ClinSig_idx` (`ClinSig`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clinvar_2021_08_31`
+--
+
+DROP TABLE IF EXISTS `clinvar_2021_08_31`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinvar_2021_08_31` (
+  `chr` varchar(2) NOT NULL DEFAULT '',
+  `pos` int(10) NOT NULL DEFAULT '0',
+  `ref` varchar(1023) NOT NULL DEFAULT '',
+  `alt` varchar(1023) NOT NULL DEFAULT '',
+  `HGVS` varchar(1023) DEFAULT NULL,
+  `ClinSource` varchar(1023) DEFAULT NULL,
+  `AlleleOrigin` int(10) DEFAULT NULL,
+  `ClinRevStat` varchar(255) DEFAULT NULL,
+  `ClinRevStar` int(10) DEFAULT NULL,
+  `ClinSig` varchar(255) DEFAULT NULL,
+  `ClinSigConf` varchar(255) DEFAULT NULL,
+  `ClinSigIncl` varchar(255) DEFAULT NULL,
+  `DiseaseDB` varchar(1023) DEFAULT NULL,
+  `DiseaseName` varchar(1023) DEFAULT NULL,
+  `PubmedID` varchar(255) DEFAULT NULL,
+  `rsID` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`chr`,`pos`,`ref`,`alt`),
+  KEY `ClinSig_idx` (`ClinSig`,`ClinSigConf`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clinvar_2021_10_01`
+--
+
+DROP TABLE IF EXISTS `clinvar_2021_10_01`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinvar_2021_10_01` (
+  `chr` varchar(2) NOT NULL DEFAULT '',
+  `pos` int(10) NOT NULL DEFAULT '0',
+  `ref` varchar(1023) NOT NULL DEFAULT '',
+  `alt` varchar(1023) NOT NULL DEFAULT '',
+  `HGVS` varchar(1023) DEFAULT NULL,
+  `ClinSource` varchar(1023) DEFAULT NULL,
+  `AlleleOrigin` int(10) DEFAULT NULL,
+  `ClinRevStat` varchar(255) DEFAULT NULL,
+  `ClinRevStar` int(10) DEFAULT NULL,
+  `ClinSig` varchar(255) DEFAULT NULL,
+  `ClinSigConf` varchar(255) DEFAULT NULL,
+  `ClinSigIncl` varchar(255) DEFAULT NULL,
+  `DiseaseDB` varchar(1023) DEFAULT NULL,
+  `DiseaseName` varchar(1023) DEFAULT NULL,
+  `PubmedID` varchar(255) DEFAULT NULL,
+  `rsID` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`chr`,`pos`,`ref`,`alt`),
+  KEY `ClinSig_idx` (`ClinSig`,`ClinSigConf`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clinvar_2021_11_01`
+--
+
+DROP TABLE IF EXISTS `clinvar_2021_11_01`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinvar_2021_11_01` (
+  `chr` varchar(2) NOT NULL DEFAULT '',
+  `pos` int(10) NOT NULL DEFAULT '0',
+  `ref` varchar(1023) NOT NULL DEFAULT '',
+  `alt` varchar(1023) NOT NULL DEFAULT '',
+  `HGVS` varchar(1023) DEFAULT NULL,
+  `ClinSource` varchar(1023) DEFAULT NULL,
+  `AlleleOrigin` int(10) DEFAULT NULL,
+  `ClinRevStat` varchar(255) DEFAULT NULL,
+  `ClinRevStar` int(10) DEFAULT NULL,
+  `ClinSig` varchar(255) DEFAULT NULL,
+  `ClinSigConf` varchar(255) DEFAULT NULL,
+  `ClinSigIncl` varchar(255) DEFAULT NULL,
+  `DiseaseDB` varchar(1023) DEFAULT NULL,
+  `DiseaseName` varchar(1023) DEFAULT NULL,
+  `PubmedID` varchar(255) DEFAULT NULL,
+  `rsID` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`chr`,`pos`,`ref`,`alt`),
+  KEY `ClinSig_idx` (`ClinSig`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clinvar_2022_01_10`
+--
+
+DROP TABLE IF EXISTS `clinvar_2022_01_10`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinvar_2022_01_10` (
+  `chr` varchar(2) NOT NULL DEFAULT '',
+  `pos` int(10) NOT NULL DEFAULT '0',
+  `ref` varchar(1023) NOT NULL DEFAULT '',
+  `alt` varchar(1023) NOT NULL DEFAULT '',
+  `HGVS` varchar(1023) DEFAULT NULL,
+  `ClinSource` varchar(1023) DEFAULT NULL,
+  `AlleleOrigin` int(10) DEFAULT NULL,
+  `ClinRevStat` varchar(255) DEFAULT NULL,
+  `ClinRevStar` int(10) DEFAULT NULL,
+  `ClinSig` varchar(255) DEFAULT NULL,
+  `ClinSigConf` varchar(255) DEFAULT NULL,
+  `ClinSigIncl` varchar(255) DEFAULT NULL,
+  `DiseaseDB` varchar(1023) DEFAULT NULL,
+  `DiseaseName` varchar(1023) DEFAULT NULL,
+  `PubmedID` varchar(255) DEFAULT NULL,
+  `rsID` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`chr`,`pos`,`ref`,`alt`),
+  KEY `ClinSig_idx` (`ClinSig`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clinvar_2022_04_08`
+--
+
+DROP TABLE IF EXISTS `clinvar_2022_04_08`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinvar_2022_04_08` (
+  `chr` varchar(2) NOT NULL DEFAULT '',
+  `pos` int(10) NOT NULL DEFAULT '0',
+  `ref` varchar(1023) NOT NULL DEFAULT '',
+  `alt` varchar(1023) NOT NULL DEFAULT '',
+  `HGVS` varchar(1023) DEFAULT NULL,
+  `ClinSource` varchar(1023) DEFAULT NULL,
+  `AlleleOrigin` int(10) DEFAULT NULL,
+  `ClinRevStat` varchar(255) DEFAULT NULL,
+  `ClinRevStar` int(10) DEFAULT NULL,
+  `ClinSig` varchar(255) DEFAULT NULL,
+  `ClinSigConf` varchar(255) DEFAULT NULL,
+  `ClinSigIncl` varchar(255) DEFAULT NULL,
+  `DiseaseDB` varchar(1023) DEFAULT NULL,
+  `DiseaseName` varchar(1023) DEFAULT NULL,
+  `PubmedID` varchar(255) DEFAULT NULL,
+  `rsID` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`chr`,`pos`,`ref`,`alt`),
+  KEY `ClinSig_idx` (`ClinSig`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clinvar_2022_07_18`
+--
+
+DROP TABLE IF EXISTS `clinvar_2022_07_18`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinvar_2022_07_18` (
+  `chr` varchar(2) NOT NULL DEFAULT '',
+  `pos` int(10) NOT NULL DEFAULT '0',
+  `ref` varchar(1023) NOT NULL DEFAULT '',
+  `alt` varchar(1023) NOT NULL DEFAULT '',
+  `HGVS` varchar(1023) DEFAULT NULL,
+  `ClinSource` varchar(1023) DEFAULT NULL,
+  `AlleleOrigin` int(10) DEFAULT NULL,
+  `ClinRevStat` varchar(255) DEFAULT NULL,
+  `ClinRevStar` int(10) DEFAULT NULL,
+  `ClinSig` varchar(255) DEFAULT NULL,
+  `ClinSigConf` varchar(255) DEFAULT NULL,
+  `ClinSigIncl` varchar(255) DEFAULT NULL,
+  `DiseaseDB` varchar(1023) DEFAULT NULL,
+  `DiseaseName` varchar(1023) DEFAULT NULL,
+  `PubmedID` varchar(255) DEFAULT NULL,
+  `rsID` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`chr`,`pos`,`ref`,`alt`),
+  KEY `ClinSig_idx` (`ClinSig`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clinvar_2022_10_05`
+--
+
+DROP TABLE IF EXISTS `clinvar_2022_10_05`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinvar_2022_10_05` (
+  `chr` varchar(2) NOT NULL DEFAULT '',
+  `pos` int(10) NOT NULL DEFAULT '0',
+  `ref` varchar(1023) NOT NULL DEFAULT '',
+  `alt` varchar(1023) NOT NULL DEFAULT '',
+  `HGVS` varchar(1023) DEFAULT NULL,
+  `ClinSource` varchar(1023) DEFAULT NULL,
+  `AlleleOrigin` int(10) DEFAULT NULL,
+  `ClinRevStat` varchar(255) DEFAULT NULL,
+  `ClinRevStar` int(10) DEFAULT NULL,
+  `ClinSig` varchar(255) DEFAULT NULL,
+  `ClinSigConf` varchar(255) DEFAULT NULL,
+  `ClinSigIncl` varchar(255) DEFAULT NULL,
+  `DiseaseDB` varchar(1023) DEFAULT NULL,
+  `DiseaseName` varchar(1023) DEFAULT NULL,
+  `PubmedID` varchar(255) DEFAULT NULL,
+  `rsID` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`chr`,`pos`,`ref`,`alt`),
+  KEY `ClinSig_idx` (`ClinSig`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `clinvar_pathoratio_2017_05_19`
 --
 
@@ -3872,6 +4453,196 @@ DROP TABLE IF EXISTS `clinvar_pathoratio_2020_10_20`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `clinvar_pathoratio_2020_10_20` (
+  `geneName` varchar(25) NOT NULL DEFAULT '',
+  `indelCount` int(5) DEFAULT NULL,
+  `copyCount` int(5) DEFAULT NULL,
+  `snvSpliceCount` int(5) DEFAULT NULL,
+  `snvNonsenseCount` int(5) DEFAULT NULL,
+  `snvMissenseCount` int(5) DEFAULT NULL,
+  `lastPathoLoc` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`geneName`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clinvar_pathoratio_2021_02_08`
+--
+
+DROP TABLE IF EXISTS `clinvar_pathoratio_2021_02_08`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinvar_pathoratio_2021_02_08` (
+  `geneName` varchar(25) NOT NULL DEFAULT '',
+  `indelCount` int(5) DEFAULT NULL,
+  `copyCount` int(5) DEFAULT NULL,
+  `snvSpliceCount` int(5) DEFAULT NULL,
+  `snvNonsenseCount` int(5) DEFAULT NULL,
+  `snvMissenseCount` int(5) DEFAULT NULL,
+  `lastPathoLoc` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`geneName`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clinvar_pathoratio_2021_04_08`
+--
+
+DROP TABLE IF EXISTS `clinvar_pathoratio_2021_04_08`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinvar_pathoratio_2021_04_08` (
+  `geneName` varchar(25) NOT NULL DEFAULT '',
+  `indelCount` int(5) DEFAULT NULL,
+  `copyCount` int(5) DEFAULT NULL,
+  `snvSpliceCount` int(5) DEFAULT NULL,
+  `snvNonsenseCount` int(5) DEFAULT NULL,
+  `snvMissenseCount` int(5) DEFAULT NULL,
+  `lastPathoLoc` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`geneName`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clinvar_pathoratio_2021_07_14`
+--
+
+DROP TABLE IF EXISTS `clinvar_pathoratio_2021_07_14`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinvar_pathoratio_2021_07_14` (
+  `geneName` varchar(25) NOT NULL DEFAULT '',
+  `indelCount` int(5) DEFAULT NULL,
+  `copyCount` int(5) DEFAULT NULL,
+  `snvSpliceCount` int(5) DEFAULT NULL,
+  `snvNonsenseCount` int(5) DEFAULT NULL,
+  `snvMissenseCount` int(5) DEFAULT NULL,
+  `lastPathoLoc` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`geneName`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clinvar_pathoratio_2021_08_31`
+--
+
+DROP TABLE IF EXISTS `clinvar_pathoratio_2021_08_31`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinvar_pathoratio_2021_08_31` (
+  `geneName` varchar(25) NOT NULL DEFAULT '',
+  `indelCount` int(5) DEFAULT NULL,
+  `copyCount` int(5) DEFAULT NULL,
+  `snvSpliceCount` int(5) DEFAULT NULL,
+  `snvNonsenseCount` int(5) DEFAULT NULL,
+  `snvMissenseCount` int(5) DEFAULT NULL,
+  `lastPathoLoc` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`geneName`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clinvar_pathoratio_2021_10_01`
+--
+
+DROP TABLE IF EXISTS `clinvar_pathoratio_2021_10_01`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinvar_pathoratio_2021_10_01` (
+  `geneName` varchar(25) NOT NULL DEFAULT '',
+  `indelCount` int(5) DEFAULT NULL,
+  `copyCount` int(5) DEFAULT NULL,
+  `snvSpliceCount` int(5) DEFAULT NULL,
+  `snvNonsenseCount` int(5) DEFAULT NULL,
+  `snvMissenseCount` int(5) DEFAULT NULL,
+  `lastPathoLoc` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`geneName`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clinvar_pathoratio_2021_11_01`
+--
+
+DROP TABLE IF EXISTS `clinvar_pathoratio_2021_11_01`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinvar_pathoratio_2021_11_01` (
+  `geneName` varchar(25) NOT NULL DEFAULT '',
+  `indelCount` int(5) DEFAULT NULL,
+  `copyCount` int(5) DEFAULT NULL,
+  `snvSpliceCount` int(5) DEFAULT NULL,
+  `snvNonsenseCount` int(5) DEFAULT NULL,
+  `snvMissenseCount` int(5) DEFAULT NULL,
+  `lastPathoLoc` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`geneName`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clinvar_pathoratio_2022_01_10`
+--
+
+DROP TABLE IF EXISTS `clinvar_pathoratio_2022_01_10`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinvar_pathoratio_2022_01_10` (
+  `geneName` varchar(25) NOT NULL DEFAULT '',
+  `indelCount` int(5) DEFAULT NULL,
+  `copyCount` int(5) DEFAULT NULL,
+  `snvSpliceCount` int(5) DEFAULT NULL,
+  `snvNonsenseCount` int(5) DEFAULT NULL,
+  `snvMissenseCount` int(5) DEFAULT NULL,
+  `lastPathoLoc` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`geneName`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clinvar_pathoratio_2022_04_08`
+--
+
+DROP TABLE IF EXISTS `clinvar_pathoratio_2022_04_08`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinvar_pathoratio_2022_04_08` (
+  `geneName` varchar(25) NOT NULL DEFAULT '',
+  `indelCount` int(5) DEFAULT NULL,
+  `copyCount` int(5) DEFAULT NULL,
+  `snvSpliceCount` int(5) DEFAULT NULL,
+  `snvNonsenseCount` int(5) DEFAULT NULL,
+  `snvMissenseCount` int(5) DEFAULT NULL,
+  `lastPathoLoc` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`geneName`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clinvar_pathoratio_2022_07_18`
+--
+
+DROP TABLE IF EXISTS `clinvar_pathoratio_2022_07_18`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinvar_pathoratio_2022_07_18` (
+  `geneName` varchar(25) NOT NULL DEFAULT '',
+  `indelCount` int(5) DEFAULT NULL,
+  `copyCount` int(5) DEFAULT NULL,
+  `snvSpliceCount` int(5) DEFAULT NULL,
+  `snvNonsenseCount` int(5) DEFAULT NULL,
+  `snvMissenseCount` int(5) DEFAULT NULL,
+  `lastPathoLoc` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`geneName`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clinvar_pathoratio_2022_10_05`
+--
+
+DROP TABLE IF EXISTS `clinvar_pathoratio_2022_10_05`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinvar_pathoratio_2022_10_05` (
   `geneName` varchar(25) NOT NULL DEFAULT '',
   `indelCount` int(5) DEFAULT NULL,
   `copyCount` int(5) DEFAULT NULL,
@@ -4158,6 +4929,174 @@ CREATE TABLE `hgmd_2020_3` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `hgmd_2020_4`
+--
+
+DROP TABLE IF EXISTS `hgmd_2020_4`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hgmd_2020_4` (
+  `chr` varchar(2) NOT NULL DEFAULT '',
+  `pos` int(10) NOT NULL DEFAULT '0',
+  `ref` varchar(256) NOT NULL DEFAULT '',
+  `alt` varchar(256) NOT NULL DEFAULT '',
+  `variantClass` varchar(255) DEFAULT NULL,
+  `pmid` varchar(255) DEFAULT NULL,
+  `DiseaseName` varchar(1023) DEFAULT NULL,
+  `is_in_clinvar` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`chr`,`pos`,`ref`,`alt`),
+  KEY `is_in_clinvar` (`is_in_clinvar`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `hgmd_2021_1`
+--
+
+DROP TABLE IF EXISTS `hgmd_2021_1`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hgmd_2021_1` (
+  `chr` varchar(2) NOT NULL DEFAULT '',
+  `pos` int(10) NOT NULL DEFAULT '0',
+  `ref` varchar(256) NOT NULL DEFAULT '',
+  `alt` varchar(256) NOT NULL DEFAULT '',
+  `variantClass` varchar(255) DEFAULT NULL,
+  `pmid` varchar(255) DEFAULT NULL,
+  `DiseaseName` varchar(1023) DEFAULT NULL,
+  `is_in_clinvar` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`chr`,`pos`,`ref`,`alt`),
+  KEY `is_in_clinvar` (`is_in_clinvar`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `hgmd_2021_2`
+--
+
+DROP TABLE IF EXISTS `hgmd_2021_2`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hgmd_2021_2` (
+  `chr` varchar(2) NOT NULL DEFAULT '',
+  `pos` int(10) NOT NULL DEFAULT '0',
+  `ref` varchar(256) NOT NULL DEFAULT '',
+  `alt` varchar(256) NOT NULL DEFAULT '',
+  `variantClass` varchar(255) DEFAULT NULL,
+  `pmid` varchar(255) DEFAULT NULL,
+  `DiseaseName` varchar(1023) DEFAULT NULL,
+  `is_in_clinvar` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`chr`,`pos`,`ref`,`alt`),
+  KEY `is_in_clinvar` (`is_in_clinvar`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `hgmd_2021_3`
+--
+
+DROP TABLE IF EXISTS `hgmd_2021_3`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hgmd_2021_3` (
+  `chr` varchar(2) NOT NULL DEFAULT '',
+  `pos` int(10) NOT NULL DEFAULT '0',
+  `ref` varchar(256) NOT NULL DEFAULT '',
+  `alt` varchar(256) NOT NULL DEFAULT '',
+  `variantClass` varchar(255) DEFAULT NULL,
+  `pmid` varchar(255) DEFAULT NULL,
+  `DiseaseName` varchar(1023) DEFAULT NULL,
+  `is_in_clinvar` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`chr`,`pos`,`ref`,`alt`),
+  KEY `is_in_clinvar` (`is_in_clinvar`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `hgmd_2021_4`
+--
+
+DROP TABLE IF EXISTS `hgmd_2021_4`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hgmd_2021_4` (
+  `chr` varchar(2) NOT NULL DEFAULT '',
+  `pos` int(10) NOT NULL DEFAULT '0',
+  `ref` varchar(256) NOT NULL DEFAULT '',
+  `alt` varchar(256) NOT NULL DEFAULT '',
+  `variantClass` varchar(255) DEFAULT NULL,
+  `pmid` varchar(255) DEFAULT NULL,
+  `DiseaseName` varchar(1023) DEFAULT NULL,
+  `is_in_clinvar` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`chr`,`pos`,`ref`,`alt`),
+  KEY `is_in_clinvar` (`is_in_clinvar`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `hgmd_2022_1`
+--
+
+DROP TABLE IF EXISTS `hgmd_2022_1`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hgmd_2022_1` (
+  `chr` varchar(2) NOT NULL DEFAULT '',
+  `pos` int(10) NOT NULL DEFAULT '0',
+  `ref` varchar(256) NOT NULL DEFAULT '',
+  `alt` varchar(256) NOT NULL DEFAULT '',
+  `variantClass` varchar(255) DEFAULT NULL,
+  `pmid` varchar(255) DEFAULT NULL,
+  `DiseaseName` varchar(1023) DEFAULT NULL,
+  `is_in_clinvar` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`chr`,`pos`,`ref`,`alt`),
+  KEY `is_in_clinvar` (`is_in_clinvar`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `hgmd_2022_2`
+--
+
+DROP TABLE IF EXISTS `hgmd_2022_2`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hgmd_2022_2` (
+  `chr` varchar(2) NOT NULL DEFAULT '',
+  `pos` int(10) NOT NULL DEFAULT '0',
+  `ref` varchar(256) NOT NULL DEFAULT '',
+  `alt` varchar(256) NOT NULL DEFAULT '',
+  `variantClass` varchar(255) DEFAULT NULL,
+  `pmid` varchar(255) DEFAULT NULL,
+  `DiseaseName` varchar(1023) DEFAULT NULL,
+  `is_in_clinvar` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`chr`,`pos`,`ref`,`alt`),
+  KEY `is_in_clinvar` (`is_in_clinvar`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `hgmd_2022_3`
+--
+
+DROP TABLE IF EXISTS `hgmd_2022_3`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hgmd_2022_3` (
+  `chr` varchar(2) NOT NULL DEFAULT '',
+  `pos` int(10) NOT NULL DEFAULT '0',
+  `ref` varchar(256) NOT NULL DEFAULT '',
+  `alt` varchar(256) NOT NULL DEFAULT '',
+  `variantClass` varchar(255) DEFAULT NULL,
+  `pmid` varchar(255) DEFAULT NULL,
+  `DiseaseName` varchar(1023) DEFAULT NULL,
+  `is_in_clinvar` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`chr`,`pos`,`ref`,`alt`),
+  KEY `is_in_clinvar` (`is_in_clinvar`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `omim_2017_05_02`
 --
 
@@ -4277,6 +5216,62 @@ DROP TABLE IF EXISTS `omim_2020_10_20`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `omim_2020_10_20` (
+  `geneName` varchar(128) NOT NULL DEFAULT '',
+  `diseaseName` text,
+  PRIMARY KEY (`geneName`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `omim_2021_01_15`
+--
+
+DROP TABLE IF EXISTS `omim_2021_01_15`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `omim_2021_01_15` (
+  `geneName` varchar(128) NOT NULL DEFAULT '',
+  `diseaseName` text,
+  PRIMARY KEY (`geneName`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `omim_2021_04_08`
+--
+
+DROP TABLE IF EXISTS `omim_2021_04_08`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `omim_2021_04_08` (
+  `geneName` varchar(128) NOT NULL DEFAULT '',
+  `diseaseName` text,
+  PRIMARY KEY (`geneName`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `omim_2021_07_14`
+--
+
+DROP TABLE IF EXISTS `omim_2021_07_14`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `omim_2021_07_14` (
+  `geneName` varchar(128) NOT NULL DEFAULT '',
+  `diseaseName` text,
+  PRIMARY KEY (`geneName`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `omim_2021_08_05`
+--
+
+DROP TABLE IF EXISTS `omim_2021_08_05`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `omim_2021_08_05` (
   `geneName` varchar(128) NOT NULL DEFAULT '',
   `diseaseName` text,
   PRIMARY KEY (`geneName`)
@@ -5711,4 +6706,4 @@ CREATE TABLE `snv_chrY` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-11 13:42:20
+-- Dump completed on 2023-01-04 15:34:35
