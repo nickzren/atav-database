@@ -137,26 +137,6 @@ screen -R load_data
 for file in atav-database/data/externaldb_load_data/*; do mysql -h 127.0.0.1 -uroot -proot -e "load data local infile 'atav-database/data/externaldb_load_data/${file##*/}' into table ${file##*/}" ; done
 ```
 
-## Restore updated knownvar data
-
-#### Download data
-```
-wget https://www.dropbox.com/s/lgvtfcdmmh8hu1c/knownvar_020821.sql.gz
-wget https://www.dropbox.com/s/irsriuc1ik1jqaz/atavdb.external_table_meta_020821.sql.gz
-```
-
-#### Extract data
-```
-gunzip knownvar_020821.sql.gz
-gunzip atavdb.external_table_meta_020821.sql.gz
-```
-
-#### Load data
-```
-mysql -h 127.0.0.1 -uroot -proot knownvar < knownvar_020821.sql
-mysql -h 127.0.0.1 -uroot -proot atavdb < atavdb.external_table_meta_020821.sql
-```
-
 ## Setup for ATAV CLI and Data Browser
 
 #### Add mysql user
