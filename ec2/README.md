@@ -117,7 +117,7 @@ sudo yum -q install Percona-Server-tokudb-56-5.6.45-rel86.1.el7
 
 #### Download data
 ```
-wget https://www.dropbox.com/s/hd5od32vh5d21hx/externaldb.tar
+wget https://www.dropbox.com/s/f6w45b4ozvynwlw/externaldb.tar
 ```
 
 #### Extract data
