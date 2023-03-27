@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.1.73, for redhat-linux-gnu (x86_64)
+-- MySQL dump 10.14  Distrib 5.5.68-MariaDB, for Linux (x86_64)
 --
--- Host: db6    Database: dbNSFP4_1a
+-- Host: atav-mdb-prd06    Database: dbNSFP4_1a
 -- ------------------------------------------------------
--- Server version	5.6.36-82.0-log
+-- Server version	5.6.51-91.0-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -3432,13 +3432,13 @@ CREATE TABLE `variant_112320` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `variant_subset_071522`
+-- Table structure for table `variant_subset_022723`
 --
 
-DROP TABLE IF EXISTS `variant_subset_071522`;
+DROP TABLE IF EXISTS `variant_subset_022723`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `variant_subset_071522` (
+CREATE TABLE `variant_subset_022723` (
   `variant_id` int(10) NOT NULL,
   `chr` varchar(2) NOT NULL,
   `pos` int(10) NOT NULL,
@@ -3454,13 +3454,13 @@ CREATE TABLE `variant_subset_071522` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `variant_subset_101122`
+-- Table structure for table `variant_subset_031023`
 --
 
-DROP TABLE IF EXISTS `variant_subset_101122`;
+DROP TABLE IF EXISTS `variant_subset_031023`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `variant_subset_101122` (
+CREATE TABLE `variant_subset_031023` (
   `variant_id` int(10) NOT NULL,
   `chr` varchar(2) NOT NULL,
   `pos` int(10) NOT NULL,
@@ -4294,6 +4294,35 @@ CREATE TABLE `clinvar_2022_10_05` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `clinvar_2023_03_20`
+--
+
+DROP TABLE IF EXISTS `clinvar_2023_03_20`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinvar_2023_03_20` (
+  `chr` varchar(2) NOT NULL DEFAULT '',
+  `pos` int(10) NOT NULL DEFAULT '0',
+  `ref` varchar(1023) NOT NULL DEFAULT '',
+  `alt` varchar(1023) NOT NULL DEFAULT '',
+  `HGVS` varchar(1023) DEFAULT NULL,
+  `ClinSource` varchar(1023) DEFAULT NULL,
+  `AlleleOrigin` int(10) DEFAULT NULL,
+  `ClinRevStat` varchar(255) DEFAULT NULL,
+  `ClinRevStar` int(10) DEFAULT NULL,
+  `ClinSig` varchar(255) DEFAULT NULL,
+  `ClinSigConf` varchar(255) DEFAULT NULL,
+  `ClinSigIncl` varchar(255) DEFAULT NULL,
+  `DiseaseDB` varchar(1023) DEFAULT NULL,
+  `DiseaseName` varchar(1023) DEFAULT NULL,
+  `PubmedID` varchar(255) DEFAULT NULL,
+  `rsID` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`chr`,`pos`,`ref`,`alt`),
+  KEY `ClinSig_idx` (`ClinSig`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `clinvar_pathoratio_2017_05_19`
 --
 
@@ -4643,6 +4672,25 @@ DROP TABLE IF EXISTS `clinvar_pathoratio_2022_10_05`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `clinvar_pathoratio_2022_10_05` (
+  `geneName` varchar(25) NOT NULL DEFAULT '',
+  `indelCount` int(5) DEFAULT NULL,
+  `copyCount` int(5) DEFAULT NULL,
+  `snvSpliceCount` int(5) DEFAULT NULL,
+  `snvNonsenseCount` int(5) DEFAULT NULL,
+  `snvMissenseCount` int(5) DEFAULT NULL,
+  `lastPathoLoc` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`geneName`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clinvar_pathoratio_2023_03_20`
+--
+
+DROP TABLE IF EXISTS `clinvar_pathoratio_2023_03_20`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinvar_pathoratio_2023_03_20` (
   `geneName` varchar(25) NOT NULL DEFAULT '',
   `indelCount` int(5) DEFAULT NULL,
   `copyCount` int(5) DEFAULT NULL,
@@ -5083,6 +5131,27 @@ DROP TABLE IF EXISTS `hgmd_2022_3`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `hgmd_2022_3` (
+  `chr` varchar(2) NOT NULL DEFAULT '',
+  `pos` int(10) NOT NULL DEFAULT '0',
+  `ref` varchar(256) NOT NULL DEFAULT '',
+  `alt` varchar(256) NOT NULL DEFAULT '',
+  `variantClass` varchar(255) DEFAULT NULL,
+  `pmid` varchar(255) DEFAULT NULL,
+  `DiseaseName` varchar(1023) DEFAULT NULL,
+  `is_in_clinvar` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`chr`,`pos`,`ref`,`alt`),
+  KEY `is_in_clinvar` (`is_in_clinvar`)
+) ENGINE=TokuDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `hgmd_2022_4`
+--
+
+DROP TABLE IF EXISTS `hgmd_2022_4`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hgmd_2022_4` (
   `chr` varchar(2) NOT NULL DEFAULT '',
   `pos` int(10) NOT NULL DEFAULT '0',
   `ref` varchar(256) NOT NULL DEFAULT '',
@@ -6706,4 +6775,4 @@ CREATE TABLE `snv_chrY` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-04 15:34:35
+-- Dump completed on 2023-03-26 19:52:11
