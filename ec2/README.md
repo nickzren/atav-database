@@ -3,12 +3,12 @@
 The instruction of AWS EC2 setup for ATAV database.
 
 ## Requirement
-* percona-server 5.6.45
+* percona-server 5.6
 
 ## Launch Amazon EC2
 
 1. Choose an Amazon Machine Image: Amazon Linux 2 AMI (HVM)
-2. Choose an Instance Type: t3.2xlarge (test/dev)
+2. Choose an Instance Type: m5.2xlarge (test/dev)
 3. Configure Instance Details: default
 4. Add Storage: 300GB gp3 (test/dev)
 
@@ -19,10 +19,10 @@ The instruction of AWS EC2 setup for ATAV database.
 sudo yum groupinstall "Development Tools"
 ```
 
-#### Install percona tokudb 5.6.45
+#### Install percona tokudb 5.6
 ```
 sudo yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm
-sudo yum -q install Percona-Server-tokudb-56-5.6.45-rel86.1.el7
+sudo yum -q install Percona-Server-tokudb-56.x86_64
 ```
 
 #### Create mysql tmp dir
